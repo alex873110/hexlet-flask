@@ -1,0 +1,31 @@
+<form action="/users" method="post">
+  <div>
+    <label>
+      Nickname
+      <input type="text" name="nickname" value="{{ 
+user.nickname 
+}}">
+    </label>
+    {% if errors['nickname'] %}
+      <div>{{ errors['nickname'] }}</div>
+    {% endif %}
+  </div>
+  <div>
+    <label>
+      Email
+      <input type="email" required name="email" value="{{ 
+user.email }}">
+    </label>
+    {% if errors['email'] %}
+      <div>{{ errors['email'] }}</div>
+    {% endif %}
+    </div>
+  <input type="submit" value="Sign Up">
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+</form>
